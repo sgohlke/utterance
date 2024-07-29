@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text to speak</title>
+  </head>
+  <body>
+    <h1>Text to speak</h1>
+    <form id="form">
+      <label for="texttospeak">Enter text to speak:</label>
+      <input type="text" id="texttospeak" name="texttospeak" /><br /><br />
+      <input type="submit" value="Play" />
+    </form>
+    <script>
+      const synth = window.speechSynthesis;
+
+      document.getElementById("form").onsubmit = (event) => {
+        console.log(event);
+        event.preventDefault();
+
+        const utterThis = new SpeechSynthesisUtterance(
+          document.getElementById("texttospeak").value
+        );
+        synth.speak(utterThis);
+      };
+    </script>
+  </body>
+</html>
